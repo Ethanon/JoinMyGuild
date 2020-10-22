@@ -13,6 +13,8 @@ namespace JoinMyGuild
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(CreateUserPage), typeof(CreateUserPage));
+            Routing.RegisterRoute(nameof(NewAccountDetailsPage), typeof(NewAccountDetailsPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

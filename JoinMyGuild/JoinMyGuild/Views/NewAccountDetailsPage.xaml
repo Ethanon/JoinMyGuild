@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JoinMyGuild.Views.NewAccountDetailsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame HorizontalOptions="Fill" BackgroundColor="AliceBlue">
+                    <Label HorizontalOptions="Center" Margin="2" Text="What's your playstyle?" FontAttributes="Bold"/>
+                </Frame>
+                <Label Text="Choose up to 3 labels to describe your play style" Margin="5,0"/>                
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Quests" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Trade Skills" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Raids" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Instance Zones" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Talkative" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Friendly" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Newbie" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Veteran" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Competitive" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox  />
+                    <Label Text="Active Daily" VerticalOptions="Center"/>
+                </StackLayout>
+                <Button Text="Finish" Command="{Binding SubmitNewAccountCommand}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
