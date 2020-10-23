@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JoinMyGuild.Pages;
+using System;
+using Xamarin.Forms;
 
 namespace JoinMyGuild.Services
 {
@@ -15,13 +17,18 @@ namespace JoinMyGuild.Services
         {
         }
 
+        public bool VerifySession()
+        {
+            return true;
+        }
+
         /// <summary>
         /// Logins the specified on login completed callback.
         /// </summary>
         /// <param name="onLoginCompletedCallback">The on login completed callback.</param>
         public void Login(Action<AuthenticatedUserResponseEventArgs> onLoginCompletedCallback)
         {
-            if (!_isLoggingIn)
+            if (!_isLoggingIn || !VerifySession())
             {
                 _isLoggingIn = true;
                 _loginCompletedCallback = onLoginCompletedCallback;
@@ -34,6 +41,14 @@ namespace JoinMyGuild.Services
                 _authenticationSource.OnAuthenticationCompleted += OnAuthenticationCompelted;
                 _authenticationSource.Login();
             }
+        }
+
+        /// <summary>
+        /// Logouts this instance.
+        /// </summary>
+        public void Logout()
+        {
+            Application.Current.MainPage = new Login();
         }
 
         /// <summary>

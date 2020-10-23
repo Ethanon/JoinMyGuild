@@ -11,6 +11,11 @@ namespace JoinMyGuild.Services.AuthenticationSources
     public abstract class AuthenticationSourceBase : IAuthenticationSource
     {
         /// <summary>
+        /// The authenticator
+        /// </summary>
+        private OAuth2Authenticator _authenticator;
+
+        /// <summary>
         /// Gets or sets the scope.
         /// </summary>
         /// <value>
@@ -65,13 +70,14 @@ namespace JoinMyGuild.Services.AuthenticationSources
         {
             try
             {
-                var authenticator = new OAuth2Authenticator(ClientId, Scope, AuthorizationUri, RedirectUri);
-                authenticator.Completed += OnAuthenticationCompletedCallback;
+                _authenticator = new OAuth2Authenticator(ClientId, Scope, AuthorizationUri, RedirectUri);
+                _authenticator.Completed += OnAuthenticationCompletedCallback;
                 var presenter = new OAuthLoginPresenter();
-                presenter.Login(authenticator);
+                presenter.Login(_authenticator);
             }
             catch (Exception)
             {
+                _authenticator.Completed -= OnAuthenticationCompletedCallback;
                 NotifyOnCompletedEvent(new AuthenticatedUserResponseEventArgs(false));
             }
         }
@@ -92,6 +98,7 @@ namespace JoinMyGuild.Services.AuthenticationSources
         /// <param name="authenticatedUserResponse">The <see cref="AuthenticatedUserResponseEventArgs"/> instance containing the event data.</param>
         protected void NotifyOnCompletedEvent(AuthenticatedUserResponseEventArgs authenticatedUserResponse)
         {
+            _authenticator.Completed -= OnAuthenticationCompletedCallback;
             OnAuthenticationCompleted?.Invoke(this, authenticatedUserResponse);
         }
     }

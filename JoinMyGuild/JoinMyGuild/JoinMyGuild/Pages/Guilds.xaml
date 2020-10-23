@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:JoinMyGuild.Pages"
+             x:Class="JoinMyGuild.Pages.Guilds" Title="Guilds" BackgroundColor="Black" IconImageSource="Resources\Images\torii-gate-solid.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0" ItemsSource="{Binding Guilds}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell  Text="{Binding Name}" TextColor="White"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="1" Text="Join a Guild"/>
+    </Grid>
+</ContentPage>

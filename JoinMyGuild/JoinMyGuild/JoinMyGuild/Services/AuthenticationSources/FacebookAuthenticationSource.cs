@@ -39,6 +39,9 @@ namespace JoinMyGuild.Services.AuthenticationSources
                 {
                     // inspect access token and verify permissions were granted
                     var accessToken = e.Account.Properties["access_token"];
+
+                    // store access token for session management
+
                     HttpClient client = new HttpClient();
                     var userProfileReponse = await client.GetStringAsync(UserInfoUrl.Format(accessToken));
                     var userProfile = JsonConvert.DeserializeObject<FacebookProfile>(userProfileReponse);
